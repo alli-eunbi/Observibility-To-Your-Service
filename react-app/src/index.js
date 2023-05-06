@@ -7,7 +7,11 @@ import * as Sentry from '@sentry/react';
 
 Sentry.init({
   dsn: 'https://a00a7e858ae04a2e8ac39dec43d55089@o4505130507829248.ingest.sentry.io/4505130513203200',
-  integrations: [new Sentry.BrowserTracing()],
+  integrations: [
+    new Sentry.BrowserTracing({
+      shouldCreateSpanForRequest: 'http://localhost:3000',
+    }),
+  ],
 
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
